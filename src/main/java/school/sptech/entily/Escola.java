@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-;
 
 public abstract class Escola {
 
@@ -18,17 +17,7 @@ public abstract class Escola {
     public abstract void gerarIndicadorMacro(RegistroDAO dao, int ano);
 
     public Double calcularMedianaLista(List<Double> notas) {
-        if (notas == null || notas.isEmpty()) return 0.0;
-
-        List<Double> listaOrdenada = new ArrayList<>(notas);
-        Collections.sort(listaOrdenada);
-
-        int meio = listaOrdenada.size() / 2;
-        if (listaOrdenada.size() % 2 == 1) {
-            return listaOrdenada.get(meio);
-        } else {
-            return (listaOrdenada.get(meio - 1) + listaOrdenada.get(meio)) / 2.0;
-        }
+        return calcularMedianaEstatica(notas);
     }
 
     public static void gerarIndicadorBrasil(RegistroDAO dao, int ano) {
@@ -49,7 +38,7 @@ public abstract class Escola {
         dao.salvarEstatisticaMacro(ano, "BRASIL", medCn, medCh, medLp, medMt, medRed);
     }
 
-    private static Double calcularMedianaEstatica(List<Double> notas) {
+    public static Double calcularMedianaEstatica(List<Double> notas) {
         if (notas == null || notas.isEmpty()) return 0.0;
 
         List<Double> lista = new ArrayList<>(notas);

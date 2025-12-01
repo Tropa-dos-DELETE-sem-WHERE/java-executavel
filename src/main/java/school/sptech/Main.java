@@ -26,7 +26,7 @@ public class Main {
             InputStream s3Stream = AwsConnection.getArquivo(bucket, arquivo);
 
             LeituraArquivo service = new LeituraArquivo(conn);
-            service.processar(s3Stream); // Passa o Stream, não o nome do arquivo
+            service.processar(s3Stream);
 
             // Calcular Medianas
             RegistroDAO dao = new RegistroDAO(conn);

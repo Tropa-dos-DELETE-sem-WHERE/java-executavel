@@ -28,8 +28,8 @@ public class LeituraArquivo {
     }
 
     public void processar(InputStream inputStream) {
-        System.out.println("Iniciando processamento via Stream...");
-        logsDAO.salvar(new Logs("Iniciando leitura via Stream", Status.AVISO));
+        System.out.println("Iniciando processamento...");
+        logsDAO.salvar(new Logs("Iniciando leitura", Status.AVISO));
 
         try {
 
@@ -138,7 +138,7 @@ public class LeituraArquivo {
         }
     }
 
-    private String getTexto(Row row, int index) {
+    public String getTexto(Row row, int index) {
         Cell cell = row.getCell(index);
         if (cell == null) return "";
         if (cell.getCellType() == CellType.STRING) return cell.getStringCellValue().trim();
@@ -146,7 +146,7 @@ public class LeituraArquivo {
         return cell.toString().trim().replace(".0", "");
     }
 
-    private Double getNota(Row row, int index) {
+    public Double getNota(Row row, int index) {
         String valor = getTexto(row, index);
         if (valor.isEmpty()) return null;
         try {
@@ -156,11 +156,11 @@ public class LeituraArquivo {
         }
     }
 
-    private Integer parseIntSeguro(String val) {
+    public Integer parseIntSeguro(String val) {
         try { return Integer.parseInt(val.replace(".0", "")); } catch (Exception e) { return null; }
     }
 
-    private int getUfId(String uf) {
+    public int getUfId(String uf) {
         if (uf == null) return 0;
         switch (uf.toUpperCase()) {
             case "RO": return 11; case "AC": return 12; case "AM": return 13; case "RR": return 14;
@@ -174,7 +174,7 @@ public class LeituraArquivo {
         }
     }
 
-    private int getTipoId(String tipoStr) {
+    public int getTipoId(String tipoStr) {
         String limpo = tipoStr.replace(".0", "").trim();
         switch (limpo) {
             case "1": return 3; case "2": return 1; case "3": return 2; case "4": return 4; default: return 0;

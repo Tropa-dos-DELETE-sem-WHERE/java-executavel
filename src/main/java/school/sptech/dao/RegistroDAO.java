@@ -114,7 +114,7 @@ public class RegistroDAO {
         }
     }
 
-    private void setDecimal(PreparedStatement ps, int index, Double valor) throws SQLException {
+    public void setDecimal(PreparedStatement ps, int index, Double valor) throws SQLException {
         if (valor == null) {
             ps.setNull(index, Types.DECIMAL);
         } else {

@@ -141,8 +141,21 @@ public class LeituraArquivo {
     public String getTexto(Row row, int index) {
         Cell cell = row.getCell(index);
         if (cell == null) return "";
-        if (cell.getCellType() == CellType.STRING) return cell.getStringCellValue().trim();
-        if (cell.getCellType() == CellType.NUMERIC) return String.valueOf((long) cell.getNumericCellValue());
+
+        if (cell.getCellType() == CellType.STRING) {
+            return cell.getStringCellValue().trim();
+        }
+
+        if (cell.getCellType() == CellType.NUMERIC) {
+            double valor = cell.getNumericCellValue();
+
+            if (valor == (long) valor) {
+                return String.valueOf((long) valor);
+            }
+
+            return String.valueOf(valor);
+        }
+
         return cell.toString().trim().replace(".0", "");
     }
 

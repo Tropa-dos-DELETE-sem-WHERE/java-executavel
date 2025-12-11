@@ -3,6 +3,7 @@ package school.sptech;
 import school.sptech.conexao.AwsConnection;
 import school.sptech.conexao.DataBaseConnection;
 import school.sptech.dao.RegistroDAO;
+import school.sptech.dao.SlackDAO;
 import school.sptech.entily.*;
 import school.sptech.service.LeituraArquivo;
 
@@ -48,5 +49,10 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        SlackDAO slack = new SlackDAO();
+
+        slack.enviarAlertaMedianas();
+        slack.enviarLogAcessoNaoEnviados();
     }
 }

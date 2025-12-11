@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="JavaPIReal" />
         <module name="JavaPI" />
+        <module name="console-tesste" />
       </profile>
     </annotationProcessing>
   </component>
